@@ -3,9 +3,15 @@ const path = require('path')
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
+
+app.use(express.static(path.join(__dirname,"public")))
+
+
+app.get('/hello/:name', (req, res) => {
   //res.send('Hello World!')
-  res.sendFile(path.join(__dirname,'test.html'))
+  //res.sendFile(path.join(__dirname,'test.html'))
+  //res.json({"age":"24"})
+  res.send("hi this is "+req.params.name)
 })
 
 app.get('/about', (req, res) => {
